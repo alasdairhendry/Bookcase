@@ -1,4 +1,6 @@
 ﻿using Caliburn.Micro;
+using DataManager.Library.DataAccess;
+using DataManager.Library.Internal.DataAccess;
 using DesktopInterface.ViewModels;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -21,9 +23,13 @@ namespace DesktopInterface.Core
         {
             container.Instance(container);
 
-            // Configure Per Request types
+            // Configure Instance types
             IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build();
             container.Instance(config);
+
+            // Configure Per Request types
+            container.PerRequest<ISqlConnector, SqlConnector>()
+                .PerRequest<IBookDataConnector, BookDataConnector>();
 
             // Configure Singleton types
             container.Singleton<IWindowManager, WindowManager>()

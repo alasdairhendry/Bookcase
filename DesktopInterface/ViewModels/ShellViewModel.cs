@@ -9,17 +9,18 @@ namespace DesktopInterface.ViewModels
 
         public string ApplicationVersion
         {
-            get { return $"v{_applicationVersion}"; }
+            get { return _applicationVersion; }
             set
             {
                 _applicationVersion = value;
-                NotifyOfPropertyChange(() => ApplicationVersion);
+                NotifyOfPropertyChange(() => ApplicationVersion);                
             }
         }
 
         public ShellViewModel(IConfiguration config)
         {
             _applicationVersion = config["app-version"] ?? string.Empty;
+            ActivateItemAsync(IoC.Get<BookcaseViewModel>());
         }
     }
 }

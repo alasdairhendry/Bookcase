@@ -65,4 +65,11 @@
   <ItemGroup>
     <None Include="PublishLocations\Data.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Book.sql" />
+    <Build Include="dbo\Stored Procedures\spBook_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\spBook_GetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spBook_GetById.sql" />
+    <Build Include="dbo\Stored Procedures\spBook_GetByIsbn.sql" />
+  </ItemGroup>
 </Project>
