@@ -10,5 +10,8 @@ namespace DataManager.Library.DataAccess
         Task<BookDataModel> GetById(string Id);
         Task<BookDataModel> GetByIsbn(string ISBN);
         Task Insert(BookDataModel model);
+        Task Update(BookDataModel model);
+        Task Delete(int Id);
+        Task DeleteAll();
     }
 }

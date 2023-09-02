@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              FontSize="18"
              d:Background="#FFFDEADD"
-             d:DesignHeight="425" d:DesignWidth="800">
+             d:DesignHeight="396" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
@@ -20,7 +20,8 @@
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Text="Book Management" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
 
-        <ListBox Grid.Row="1" Grid.Column="0" x:Name="BookcaseItems">
+        <!--Bookcase Items-->
+        <ListBox Grid.Row="1" Grid.Column="0" x:Name="BookcaseItems" IsEnabled="{Binding DisplayAddBookInverted}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}"/>
@@ -28,5 +29,63 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <!--Control Panel Grid-->
+        <Grid Grid.Row="1" Grid.Column="1" Margin="8 0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!--New Book Panel-->
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Visibility="{Binding DisplayAddBook, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBlock x:Name="ControlPanelBookLabel" Text="New Book" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0 0 0 8"/>
+
+                <DockPanel Margin="0,0,0,4">
+                    <TextBlock Text="Title" VerticalAlignment="Center" FontWeight="Normal" MinWidth="104"/>
+                    <TextBox x:Name="tbTempBookItemTitle" DataContext="{Binding TempBookItem}" Text="{Binding Title}" Height="32"/>
+                </DockPanel>
+
+                <DockPanel Margin="0,0,0,4">
+                    <TextBlock Text="Author" VerticalAlignment="Center" FontWeight="Normal" MinWidth="104"/>
+                    <TextBox DataContext="{Binding TempBookItem}" Text="{Binding Author}" Height="32"/>
+                </DockPanel>
+
+                <DockPanel Margin="0,0,0,4">
+                    <TextBlock Text="Description" VerticalAlignment="Center" FontWeight="Normal" MinWidth="104"/>
+                    <TextBox DataContext="{Binding TempBookItem}" Text="{Binding Description}" Height="32"/>
+                </DockPanel>
+
+                <DockPanel Margin="0,0,0,4">
+                    <TextBlock Text="ISBN" VerticalAlignment="Center" FontWeight="Normal" MinWidth="104"/>
+                    <TextBox DataContext="{Binding TempBookItem}" Text="{Binding ISBN}" Height="32"/>
+                </DockPanel>
+
+                <Button x:Name="CancelAddBook" Content="Cancel" Margin="0 6 0 6"/>
+                <Button x:Name="ConfirmAddBook" Content="Confirm"/>
+            </StackPanel>
+
+            <!--Action Buttons Panel-->
+            <Grid Grid.Row="1" IsEnabled="{Binding DisplayAddBookInverted}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="6"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!--First Column-->
+                <StackPanel Grid.Column="0" VerticalAlignment="Bottom">
+                    <Button x:Name="EditBook" Content="Edit" Margin="0 6"/>
+                    <Button x:Name="AddBook" Content="Add"  Margin="0 0"/>
+
+                </StackPanel>
+
+                <!--Second Column-->
+                <StackPanel Grid.Column="2" VerticalAlignment="Bottom">
+                    <Button x:Name="ClearBooks" Content="Clear"  Margin="0 6"/>
+                    <Button x:Name="DeleteBook" Content="Delete"  Margin="0 0"/>
+
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

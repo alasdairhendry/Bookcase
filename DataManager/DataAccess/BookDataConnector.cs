@@ -35,7 +35,22 @@ namespace DataManager.Library.DataAccess
 
         public async Task Insert(BookDataModel model)
         {
-            await sql.SaveData("spBook_Insert", model, "BookcaseData");
+            await sql.SaveData("spBook_Insert", new { model.Title, model.ISBN, model.Author, model.Description }, "BookcaseData");
+        }
+
+        public async Task Update(BookDataModel model)
+        {
+            await sql.SaveData("spBook_Update", new { model.Id, model.Title, model.ISBN, model.Author, model.Description }, "BookcaseData");
+        }
+
+        public async Task Delete(int Id)
+        {
+            await sql.SaveData("spBook_Delete", new { Id }, "BookcaseData");
+        }
+
+        public async Task DeleteAll()
+        {
+            await sql.SaveData("spBook_DeleteAll", new { }, "BookcaseData");
         }
     }
 }

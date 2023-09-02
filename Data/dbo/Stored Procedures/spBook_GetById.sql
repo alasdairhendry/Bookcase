@@ -4,6 +4,6 @@ AS
 begin
 	set nocount on;
 
-	select [Id], [Title], [Description], [ISBN], [Author] from dbo.Book
+	select [Id], [Title], [ISBN], [Author], [Description] from dbo.Book
 	where Id = @Id;
 end

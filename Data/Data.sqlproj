@@ -71,5 +71,8 @@
     <Build Include="dbo\Stored Procedures\spBook_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spBook_GetById.sql" />
     <Build Include="dbo\Stored Procedures\spBook_GetByIsbn.sql" />
+    <Build Include="dbo\Stored Procedures\spBook_Update.sql" />
+    <Build Include="dbo\Stored Procedures\spBook_Delete.sql" />
+    <Build Include="dbo\Stored Procedures\spBook_DeleteAll.sql" />
   </ItemGroup>
 </Project>
