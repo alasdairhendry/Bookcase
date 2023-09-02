@@ -6,32 +6,48 @@
         xmlns:local="clr-namespace:DesktopInterface.Views"
         mc:Ignorable="d"
         FontSize="18"
-        Background="#FF1F1F1F"
-        Foreground="#FFEAE8E8"
+        Background="{DynamicResource Backdrop}"
+        Foreground="{DynamicResource OuterText}"
         Title="Bookcase" Height="512" Width="768">
 
-     
-    <Grid>
-        <Grid.Resources>
+    <Window.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="Backdrop" Color="#dcdde1"/>
+            <SolidColorBrush x:Key="Card" Color="#ffffff"/>
+            <SolidColorBrush x:Key="Button" Color="#FFB3BEEA"/>
+            <SolidColorBrush x:Key="OuterText" Color="#FF31373E"/>
+            <SolidColorBrush x:Key="InnerText" Color="#FF515A65"/>
+
+            <Style TargetType="Menu">
+                <Setter Property="Background" Value="{StaticResource Card}"></Setter>
+                <Setter Property="Foreground" Value="{StaticResource InnerText}"></Setter>
+            </Style>
+
             <Style TargetType="Button">
-                <Setter Property="Background" Value="#FF383838"/>
-                <Setter Property="Foreground" Value="#FFEAE8E8"/>
+                <Setter Property="Background" Value="{StaticResource Button}"></Setter>
+                <Setter Property="Foreground" Value="{StaticResource InnerText}"></Setter>
             </Style>
 
             <Style TargetType="ListBox">
-                <Setter Property="Background" Value="#FF383838"/>
-                <Setter Property="Foreground" Value="#FFEAE8E8"/>
+                <Setter Property="Background" Value="{StaticResource Card}"></Setter>
+                <Setter Property="Foreground" Value="{StaticResource InnerText}"></Setter>
             </Style>
-        </Grid.Resources>       
 
-        
+            <Style TargetType="TextBox">
+                <Setter Property="Background" Value="{StaticResource Card}"></Setter>
+                <Setter Property="Foreground" Value="{StaticResource InnerText}"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+     
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24"/>
             <RowDefinition/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" FontSize="16" Background="#FF424242" Foreground="#FFF3F3F3">
+        <Menu Grid.Row="0" FontSize="16" Background="{StaticResource Backdrop}" Foreground="{StaticResource OuterText}">
             <Menu.Items>
                 <MenuItem Header="File"></MenuItem>
                 <MenuItem Header="Help">
@@ -46,7 +62,7 @@
         </Border>
 
         <Grid Grid.Row="2">
-            <Rectangle Fill="#FF424242"/>
+            <Rectangle Fill="{DynamicResource Card}"/>
             <StackPanel Margin="8 0" VerticalAlignment="Center" Orientation="Horizontal">
                 <TextBlock Text="Version No. " FontWeight="Light" />
                 <TextBlock x:Name="ApplicationVersion" Text="2023.0.0"/>

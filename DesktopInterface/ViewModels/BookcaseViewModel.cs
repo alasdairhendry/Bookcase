@@ -6,6 +6,7 @@ using DesktopInterface.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -118,6 +119,7 @@ namespace DesktopInterface.ViewModels
                     });
                 }
 
+                displayModels = displayModels.OrderBy(x => x.Author).ThenBy(x => x.Title).ToList();
                 BookcaseItems = new BindingList<BookDisplayModel>(displayModels);
             }
             catch (Exception ex)
