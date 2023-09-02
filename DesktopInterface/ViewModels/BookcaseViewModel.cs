@@ -40,7 +40,10 @@ namespace DesktopInterface.ViewModels
                 NotifyOfPropertyChange(() => TempBookItem);
             }
         }
-
+        
+        /// <summary>
+        /// The label to display in the TempBookItem
+        /// </summary>
         public string ControlPanelBookLabel
         {
             get { return $"{(tempBookIsEdit ? "Edit" : "Add")} Book"; }
